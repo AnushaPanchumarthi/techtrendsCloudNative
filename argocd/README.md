@@ -1,3 +1,3 @@
 ## ArgoCD Manifests 
 
-Place the ArgoCD manifests in this directory.
+Folder contains ArgoCD manifests for Application CRD.
