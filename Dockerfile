@@ -14,5 +14,7 @@ RUN python init_db.py
 
 EXPOSE 3111
 
+ENV DEBUG=true
+
 # command to run on container start
 CMD [ "python", "app.py" ]

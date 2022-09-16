@@ -1,20 +1,18 @@
+from logging import handlers
 import sqlite3
 import logging
+import sys
 from urllib import response
-
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
-#track the db connection count
-connection_count = 0
 
 # Function to get a database connection.
-# This function connects to database with the name `database.db`
+"""This function connects to database with the name database.db."""
 def get_db_connection():
-    global connection_count
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
-    connection_count += 1
+    app.config['count'] += 1
     return connection
 
 # Function to get a post using its ID
@@ -27,15 +25,29 @@ def get_post(post_id):
 
 # Function to return posts
 def get_variadic_posts():
-    connection = get_db_connection()
-    posts = connection.execute('SELECT * FROM posts').fetchall()
-    connection.close()
-    return posts
-
+    try:
+        connection = get_db_connection()
+        posts = connection.execute('SELECT * FROM posts').fetchall()
+        app.logger.info('Successfully Retrieved Data from db')
+        connection.close()
+        return posts
+    except:
+        app.logger.error('database file doesn\'t exist.Try initializing db before running the app')
+        return ''
 
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+#track the db connection count
+app.config['count'] = 0
+app.logger.propagate = False
+
+# set logger to handle STDOUT and STDERR 
+stdout_handler = logging.StreamHandler(sys.stdout) # stdout handler
+stdout_handler.setLevel(logging.DEBUG)
+stderr_handler = logging.StreamHandler(sys.stderr) # stderr handler 
+stderr_handler.setLevel(logging.ERROR)
+handlers = [stderr_handler, stdout_handler]
 
 # Define the main route of the web application 
 @app.route('/')
@@ -108,7 +120,7 @@ def healthz():
 def metrics():
     post_count = get_variadic_posts()
     response = app.response_class(
-         response=json.dumps({"status":"success","data":{"db_connection_count":connection_count,"post_count":len(post_count)}}),
+         response=json.dumps({"status":"success","data":{"db_connection_count":app.config['count'],"post_count":len(post_count)}}),
             status=200,
             mimetype='application/json'
     )
@@ -119,5 +131,5 @@ def metrics():
 if __name__ == "__main__":
    logging.basicConfig(
         format='%(levelname)s:%(name)s:%(asctime)s, %(message)s',
-        datefmt='%m/%d/%Y, %I:%M:%S', level=logging.DEBUG)
+        datefmt='%m/%d/%Y, %I:%M:%S', level=logging.DEBUG, handlers=handlers)
    app.run(host='0.0.0.0', port='3111')
