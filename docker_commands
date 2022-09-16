@@ -6,6 +6,7 @@ docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
  docker logs a1b0745abb8aa8a37170f5d64c7e8d71d13930b7fe526e172d0736fa8759545e
+ docker logs -f $$(docker ps | grep <CONTAINER_NAME> | tr " " "\n" | tail -1)
 
 ## Logs from the container running the TechTrends application
 WARNING:werkzeug:09/15/2022, 10:49:25,  * Running on all addresses.
