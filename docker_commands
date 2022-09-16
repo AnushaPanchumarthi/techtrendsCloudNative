@@ -9,29 +9,24 @@ docker run -d -p 7111:3111 techtrends
  docker logs -f $$(docker ps | grep <CONTAINER_NAME> | tr " " "\n" | tail -1)
 
 ## Logs from the container running the TechTrends application
-WARNING:werkzeug:09/15/2022, 10:49:25,  * Running on all addresses.
-   WARNING: This is a development server. Do not use it in a production deployment.
-INFO:werkzeug:09/15/2022, 10:49:25,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
-INFO:werkzeug:09/15/2022, 10:50:50, 172.17.0.1 - - [15/Sep/2022 10:50:50] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 10:50:51, 172.17.0.1 - - [15/Sep/2022 10:50:51] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/15/2022, 10:51:04, Request for Metrics is Successful
-INFO:werkzeug:09/15/2022, 10:51:04, 172.17.0.1 - - [15/Sep/2022 10:51:04] "GET /metrics HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 10:51:36, 172.17.0.1 - - [15/Sep/2022 10:51:36] "GET / HTTP/1.1" 200 -
- * Serving Flask app 'app' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
-INFO:werkzeug:09/15/2022, 10:51:36, 172.17.0.1 - - [15/Sep/2022 10:51:36] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:werkzeug:09/15/2022, 10:51:38, 172.17.0.1 - - [15/Sep/2022 10:51:38] "GET /create HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 10:51:38, 172.17.0.1 - - [15/Sep/2022 10:51:38] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/15/2022, 10:51:45, Article "N12" is created!
-INFO:werkzeug:09/15/2022, 10:51:45, 172.17.0.1 - - [15/Sep/2022 10:51:45] "POST /create HTTP/1.1" 302 -
-INFO:werkzeug:09/15/2022, 10:51:45, 172.17.0.1 - - [15/Sep/2022 10:51:45] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 10:51:45, 172.17.0.1 - - [15/Sep/2022 10:51:45] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/15/2022, 10:51:49, Article "N12" is retrieved!
-INFO:werkzeug:09/15/2022, 10:51:49, 172.17.0.1 - - [15/Sep/2022 10:51:49] "GET /7 HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 10:51:49, 172.17.0.1 - - [15/Sep/2022 10:51:49] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:werkzeug:09/15/2022, 11:13:05, 172.17.0.1 - - [15/Sep/2022 11:13:05] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 11:13:05, 172.17.0.1 - - [15/Sep/2022 11:13:05] "GET /static/css/main.css HTTP/1.1" 200 -
-INFO:werkzeug:09/15/2022, 11:13:05, 172.17.0.1 - - [15/Sep/2022 11:13:05] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:09/16/2022, 02:09:27,  * Running on http://192.168.0.103:3111/ (Press CTRL+C to quit)
+[2022-09-16 14:09:34,690] INFO in app: Successfully Retrieved Data from db
+[2022-09-16 14:09:34,691] INFO in app: Request for Metrics is Successful
+INFO:werkzeug:09/16/2022, 02:09:34, 192.168.0.103 - - [16/Sep/2022 14:09:34] "GET /metrics HTTP/1.1" 200 -
+[2022-09-16 14:09:41,248] INFO in app: Successfully Retrieved Data from db
+INFO:werkzeug:09/16/2022, 02:09:41, 192.168.0.103 - - [16/Sep/2022 14:09:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/16/2022, 02:09:41, 192.168.0.103 - - [16/Sep/2022 14:09:41] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/16/2022, 02:09:54, 192.168.0.103 - - [16/Sep/2022 14:09:54] "GET /healthz HTTP/1.1" 200 -
+[2022-09-16 14:10:03,565] INFO in app: Successfully Retrieved Data from db
+INFO:werkzeug:09/16/2022, 02:10:03, 192.168.0.103 - - [16/Sep/2022 14:10:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/16/2022, 02:10:03, 192.168.0.103 - - [16/Sep/2022 14:10:03] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-09-16 14:10:06,414] INFO in app: Retrieved ABOUT US page
+INFO:werkzeug:09/16/2022, 02:10:06, 192.168.0.103 - - [16/Sep/2022 14:10:06] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:09/16/2022, 02:10:06, 192.168.0.103 - - [16/Sep/2022 14:10:06] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/16/2022, 02:10:10, 192.168.0.103 - - [16/Sep/2022 14:10:10] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:09/16/2022, 02:10:10, 192.168.0.103 - - [16/Sep/2022 14:10:10] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-09-16 14:10:17,759] INFO in app: Article "cncf" is created!
+INFO:werkzeug:09/16/2022, 02:10:17, 192.168.0.103 - - [16/Sep/2022 14:10:17] "POST /create HTTP/1.1" 302 -
+[2022-09-16 14:10:17,765] INFO in app: Successfully Retrieved Data from db
+INFO:werkzeug:09/16/2022, 02:10:17, 192.168.0.103 - - [16/Sep/2022 14:10:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/16/2022, 02:10:17, 192.168.0.103 - - [16/Sep/2022 14:10:17] "GET /static/css/main.css HTTP/1.1" 304 -
