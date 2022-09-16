@@ -1,3 +1,3 @@
 ## Kubernetes Declarative Manifests 
 
-Place the Kubernetes declarative manifests in this directory.
+Folder contains Kubernetes declarative manifests.A collection of YAML manifests that will manage the TechTrends application within the cluster.
