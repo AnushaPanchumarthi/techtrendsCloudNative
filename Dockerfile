@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./techtrends ./
 
-# command to run db start
+# command to run the db start
 RUN python init_db.py
 
 EXPOSE 3111
